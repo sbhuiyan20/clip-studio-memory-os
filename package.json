@@ -1,0 +1,14 @@
+{
+  "name": "clip-studio-memory-os",
+  "version": "1.0.0",
+  "description": "Agentic video clipping OS with CockroachDB as persistent memory - CockroachDB x AWS Hackathon",
+  "main": "src/agent/clipAgent.ts",
+  "scripts": {
+    "setup": "./src/ccloud/setup.sh",
+    "dev": "bun src/agent/clipAgent.ts",
+    "memory:search": "bun src/agent/memory.ts"
+  },
+  "keywords": ["cockroachdb", "agentic-memory", "aws", "bedrock", "lambda", "vector", "mcp"],
+  "license": "MIT",
+  "author": "@shamin_zmn"
+}

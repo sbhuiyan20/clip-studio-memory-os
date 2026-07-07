@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.log
+dist/
+.sam/
+cluster.json
+sa.json
+.DS_Store

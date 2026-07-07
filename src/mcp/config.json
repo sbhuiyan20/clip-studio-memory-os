@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "cockroachdb-memory-os": {
+      "command": "npx",
+      "args": ["@cockroachlabs/mcp-server-cockroachdb"],
+      "env": {
+        "DATABASE_URL": "${COCKROACHDB_URL}",
+        "MCP_ENDPOINT": "https://cockroachlabs.cloud/mcp",
+        "READ_ONLY": "true",
+        "AUDIT_LOG": "true"
+      }
+    }
+  }
+}

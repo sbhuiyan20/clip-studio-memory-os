@@ -1,0 +1,42 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Clip Studio Memory OS - S3 + Lambda + Bedrock
+
+Resources:
+  RawBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: clip-studio-raw-memory
+  RenderedBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: clip-studio-rendered-memory
+
+  ClipWorkerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: clip-studio-worker
+      CodeUri: lambda/
+      Handler: handler.handler
+      Runtime: nodejs20.x
+      Timeout: 900
+      MemorySize: 2048
+      Environment:
+        Variables:
+          COCKROACHDB_URL: "{{resolve:secretsmanager:clip-db-url}}"
+          BEDROCK_MODEL: "anthropic.claude-3-5-sonnet-20240620-v1:0"
+      Events:
+        S3NewUpload:
+          Type: S3
+          Properties:
+            Bucket: !Ref RawBucket
+            Events: s3:ObjectCreated:*
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref RawBucket
+        - S3WritePolicy:
+            BucketName: !Ref RenderedBucket
+        - Statement:
+          - Effect: Allow
+            Action: bedrock:InvokeModel
+            Resource: "*"

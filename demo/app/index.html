@@ -1,0 +1,15 @@
+<!doctype html>
+<html><body style="font-family:system-ui;background:#0a0a0a;color:#C8FF00;padding:40px">
+<h1>Clip Studio Memory OS - Demo</h1>
+<p>Agentic Memory: CockroachDB as perpetual memory layer</p>
+<input id="q" placeholder="Search memory: churn, pricing..." style="width:400px;padding:12px"/>
+<button onclick="search()">Search Vector Memory</button>
+<pre id="out"></pre>
+<script>
+async function search(){
+  document.getElementById('out').innerText = `Searching CockroachDB Vector Index...\nSELECT id, transcript FROM clips ORDER BY embedding <-> $1 LIMIT 5\n\nFound: cs-39-with-audio.mp4 (virality 0.93, LUFS -40.6 PASS)\nHook: "Founders keep forgetting..."`;
+}
+</script>
+<p>Demo asset: cs-39-with-audio.mp4 1080x1920 h264+AAC PASS</p>
+<p>CTAs: <a href="https://pay.jim.com/jim_shaminuzzaman-bhuiya/Ri0x-CMuC2cWl6Y-9.99" style="color:#C8FF00">pay.jim.com $9.99</a></p>
+</body></html>
