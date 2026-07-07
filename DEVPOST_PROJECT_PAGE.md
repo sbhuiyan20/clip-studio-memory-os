@@ -9,7 +9,7 @@ Video: https://youtu.be/REPLACE_WITH_YOUR_ID (upload Loom <3min first)
 ---
 
 ## Title
-Clip Studio Memory OS + iAgentic Next-Gen — Agents that Remember
+MemoryOS: Agents that Remember
 
 ## Tagline (60 chars max)
 Agents that think, act, remember — globally, at scale.
